@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  align-content: center;
 }
 
 .App-header {
@@ -94,7 +95,9 @@ header h1{
   background-color: #eee;
 }
 
-
-.App-link {
-  color: #61dafb;
+.progress-bar{
+  background-color: greenyellow ;
+  height: 5px;
+  float: right;
+  margin-top: 10px;
 }
