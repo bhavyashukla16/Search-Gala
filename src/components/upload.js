@@ -13,6 +13,7 @@ export default function Upload(props) {
 
   const fileEventHandler = (event) => {
      setSelectedFile(event.target.files[0])
+     console.log(event.target.files[0])
      };
 
   const fileUploadHandler = () => {
@@ -79,7 +80,7 @@ export default function Upload(props) {
         basic 
         color='red' 
         inverted 
-        onClick={() => setVisible(false)}>
+        onClick={props.changeVisible}>
           <Icon name='remove' /> Cancel
         </Button>
         <Button 
