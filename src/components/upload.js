@@ -20,6 +20,7 @@ export default function Upload(props) {
       window.alert("Please select a file!");
     }else{
       let bucketName = 'files'
+      const collectionRef = firebase.firestore().collection('images');
       let storageRef = firebase.storage().ref(`${bucketName}/${selectedFile.name}`)
       let uploadFile = storageRef.put(selectedFile)
       uploadFile.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -39,6 +40,8 @@ export default function Upload(props) {
           let storageRef = firebase.storage().ref()
           let spaceRef = storageRef.child('files/'+selectedFile.name)
           spaceRef.getDownloadURL().then((url) => {
+            // const createdAt = firebase.firestore.FieldValue.serverTimestamp;
+            // collectionRef.add({ url, createdAt });
             setUrl(url)
           console.log(url)
         })
