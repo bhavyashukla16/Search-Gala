@@ -1,28 +1,37 @@
 import React from 'react';
 import extraction from '../extraction';
-import { motion } from 'framer-motion';
 
+import { Image, Item } from 'semantic-ui-react';
 const Display = (props) => {
   const { files } = extraction('files');
 
   return (
 
-    <div >
+    
+    <Item.Group>
     {console.log(props.search)}
+    
       {files && props.search && files. filter(file=> file.name.toLowerCase().includes(props.search.toLowerCase()) ).map(file => (
-        <motion.div className="img-wrap" key={file.id} 
-          layout
-          whileHover={{ opacity: 1 }}s
-          //onClick={() => setFile(file.url)}
-        >
-          <motion.img src={file.url} alt="uploaded file"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          />
-        </motion.div>
+       
+     
+       <Item>
+         <Item.Image size='large' src={file.url}  />
+   
+         <Item.Content>
+           <Item.Header as='a'>{file.name}</Item.Header>
+          
+         </Item.Content>
+    </Item>
+   
+   
+       
+       
       ))}
-    </div>
+       </Item.Group>
+    
+    
+    
+   
   )
 }
 
