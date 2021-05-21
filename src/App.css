@@ -101,3 +101,12 @@ header h1{
   float: right;
   margin-top: 10px;
 }
+
+.display-container{
+  position: absolute;
+  top: 65%;
+  margin: auto 50% ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

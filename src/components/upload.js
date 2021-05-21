@@ -9,7 +9,7 @@ export default function Upload(props) {
   const [visible, setVisible] = useState(props.visible);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
-  //const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState(null);
 
   const fileEventHandler = (event) => {
      setSelectedFile(event.target.files[0])
@@ -39,12 +39,16 @@ export default function Upload(props) {
           // setUrl(downloadUrl);
           // console.log(url);
           let storageRef = firebase.storage().ref()
+          let name=selectedFile.name
+          let type=selectedFile.type
+          console.log("type",type);
+          console.log("name",name);
           let spaceRef = storageRef.child('files/'+selectedFile.name)
           let collectionRef = firebase.firestore().collection('files')
           spaceRef.getDownloadURL().then((url) => {
             let createdAt=Date.now();
-            collectionRef.add({url,createdAt})
-           // setUrl(url)
+            collectionRef.add({url,createdAt,name,type})
+           setUrl(url)
           console.log(url)
         })
     });
@@ -53,6 +57,7 @@ export default function Upload(props) {
   return (
     <div >
       <Modal
+      style={{position: "relative", right: "50%", top: "20%"}}
         basic
         onClose={() => setVisible(false)}
         onOpen={() => setVisible(true)}

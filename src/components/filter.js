@@ -5,6 +5,7 @@ export default function Filter(props) {
 
     const [visible, setVisible] = useState(props.filter);
     const [fileType, setFileType] = useState(null);
+    const [orderField, setOrderField] = useState('createdAt');
     const [order, setOrder] = useState('desc');
 
     const fileOptions = [
@@ -18,9 +19,15 @@ export default function Filter(props) {
       { key: 'others', value: 'others', text: 'others' }
     ]
 
+    const change_Order = (e, {value}) => {
+      setOrder(value)
+      setOrderField('')
+    }
+
 
     return (
         <Modal
+        style={{position: "relative", right: "50%", top: "20%"}}
         onClose={() => setVisible(false)}
         onOpen={() => setVisible(true)}
         open={visible}
@@ -50,6 +57,15 @@ export default function Filter(props) {
             name='radioGroup'
             value='desc'
             checked={order === 'desc'}
+            onChange={(e, {value}) => setOrder(value)}
+          />
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label='Lexicographically'
+            name='radioGroup'
+            value='asc'
+            checked={order === 'asc'}
             onChange={(e, {value}) => setOrder(value)}
           />
         </Form.Field>
