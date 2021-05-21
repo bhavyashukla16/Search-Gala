@@ -9,7 +9,7 @@ const Extraction = (collection) => {
   useEffect(() => {
     const unsub = firebase.firestore().collection(collection)
       
-      .orderBy('createdAt', 'desc')
+      .orderBy('name', 'asc')
       .onSnapshot(snap => {
         let documents = [];
         snap.forEach(file => {
