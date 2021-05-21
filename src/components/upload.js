@@ -9,7 +9,7 @@ export default function Upload(props) {
   const [visible, setVisible] = useState(props.visible);
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
-  const [url, setUrl] = useState(null);
+  const [Url, setUrl] = useState(null);
 
   const fileEventHandler = (event) => {
      setSelectedFile(event.target.files[0])
@@ -21,7 +21,7 @@ export default function Upload(props) {
       window.alert("Please select a file!");
     }else{
       let bucketName = 'files'
-      const collectionRef = firebase.firestore().collection('images');
+      //const collectionRef = firebase.firestore().collection('images');
       let storageRef = firebase.storage().ref(`${bucketName}/${selectedFile.name}`)
       let uploadFile = storageRef.put(selectedFile)
       uploadFile.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -49,7 +49,7 @@ export default function Upload(props) {
             let createdAt=Date.now();
             collectionRef.add({url,createdAt,name,type})
            setUrl(url)
-          console.log(url)
+          console.log(Url)
         })
     });
   }}

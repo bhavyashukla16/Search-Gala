@@ -3,13 +3,13 @@ import firebase from './firebase'
 
 const Extraction = (collection) => {
   const [files, setfiles] = useState([]);
-  const [orderField, setOrderField] = useState('createdAt');
-  const [order, setOrder] = useState('desc');
+  //const [orderField, setOrderField] = useState('createdAt');
+  //const [order, setOrder] = useState('desc');
 
   useEffect(() => {
     const unsub = firebase.firestore().collection(collection)
       
-      .orderBy(orderField, order)
+      .orderBy('createdAt', 'desc')
       .onSnapshot(snap => {
         let documents = [];
         snap.forEach(file => {

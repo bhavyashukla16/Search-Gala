@@ -4,8 +4,8 @@ import { Button, Modal, Header, Icon, Select, Form, Radio } from 'semantic-ui-re
 export default function Filter(props) {
 
     const [visible, setVisible] = useState(props.filter);
-    const [fileType, setFileType] = useState(null);
-    const [orderField, setOrderField] = useState('createdAt');
+    //const [fileType, setFileType] = useState(null);
+    //const [orderField, setOrderField] = useState('createdAt');
     const [order, setOrder] = useState('desc');
 
     const fileOptions = [
@@ -19,10 +19,10 @@ export default function Filter(props) {
       { key: 'others', value: 'others', text: 'others' }
     ]
 
-    const change_Order = (e, {value}) => {
-      setOrder(value)
-      setOrderField('')
-    }
+    // const change_Order = (e, {value}) => {
+    //   setOrder(value)
+    //   setOrderField('')
+    // }
 
 
     return (
@@ -37,7 +37,11 @@ export default function Filter(props) {
         Filters
       </Header>
       <Modal.Content>
-      <Select placeholder='Select file type' options={fileOptions} onChange={(e, {value}) => setFileType(value)}/>
+      <Select 
+      placeholder='Select file type' 
+      options={fileOptions} 
+      //onChange={(e, {value}) => setFileType(value)}
+      />
       <Form style={{marginTop: "20px"}}>
         <Form.Field>
           Order Files: 

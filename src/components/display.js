@@ -11,14 +11,13 @@ const Display = (props) => {
     <Card.Group>
     {console.log(props.search)}
     
-      {files && props.search && files. filter(file=> (file.name.split(".", 1)).toString().toLowerCase().includes(props.search.toLowerCase()) ).map(file => (
-       
+    {files && props.search && files.filter(file=> (file.name.split(".", 1)).toString().toLowerCase().includes(props.search.toLowerCase()) ).map(file => (
     <Card
     style={{fontSize: "1.5rem"}}
     color="orange"
     href={file.url}
     header= {file.name}
-    meta={(file.type.split("/", 1)=='image') ? 'Image' : 'Document'}
+    meta={(file.type.split("/", 1)==='image') ? 'Image' : 'Document'}
     //description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
     />
       ))}
